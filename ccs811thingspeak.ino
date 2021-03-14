@@ -41,7 +41,7 @@ This sketch assumes you have
 #include <Wire.h>        // I2C library
 #include <WiFi.h> //  WiFi library
 #include <ThingSpeak.h>  // ThingSpeak library
-#include "ccs811.h"      // CCS811 library
+#include <ccs811.h>      // CCS811 library https://github.com/maarten-pennings/CCS811
 
 
 #define LED_PIN    2    // GPIO2 == D4 == standard BLUE led available on most NodeMCU boards (LED on == D4 low)
@@ -154,7 +154,7 @@ void loop() {
   bool pass_ok=true;
   int t_data, t_status, h_data, h_status;
   uint16_t baseline;
-  int  humidity,temperature;
+  float  humidity,temperature;
 
 
 
@@ -242,7 +242,7 @@ void loop() {
   delay(1000); 
 }
 
-int readSensor(int* temperature)
+float readSensor(float* temperature)
 {
   //holds 2 bytes of data from I2C Line
   uint8_t Byte[4];
